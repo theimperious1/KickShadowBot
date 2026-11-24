@@ -17,7 +17,6 @@ import websockets
 from ai import ask_ollama
 from config import SYSTEM_PROMPT, CHANNEL_SLUG, PUSHER_APP_KEY, DISCORD_WEBHOOK_URL_CHAT, DISCORD_WEBHOOK_URL_EVENTS, DISCORD_WEBHOOK_URL_FLAGGED
 from discord import send_to_discord
-from utils import get_env
 
 # Optional: hardcode chatroom ID if you already know it (skips the lookup)
 # CHATROOM_ID = 123456

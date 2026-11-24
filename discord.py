@@ -3,7 +3,6 @@ from config import CHANNEL_SLUG
 import requests
 import logging
 from typing import Optional
-from utils import get_env
 from config import DISCORD_WEBHOOK_URL_CHAT, DISCORD_WEBHOOK_URL_EVENTS
 
 
