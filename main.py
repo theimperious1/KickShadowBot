@@ -14,27 +14,15 @@ from collections import deque
 import re
 import requests
 import websockets
-from dotenv import load_dotenv
 from ai import ask_ollama
-from config import SYSTEM_PROMPT, CHANNEL_SLUG
+from config import SYSTEM_PROMPT, CHANNEL_SLUG, PUSHER_APP_KEY, DISCORD_WEBHOOK_URL_CHAT, DISCORD_WEBHOOK_URL_EVENTS, DISCORD_WEBHOOK_URL_FLAGGED
 from discord import send_to_discord
-import os
-
-load_dotenv()
-
-def get_env(key: str) -> str:
-    value = os.getenv(key)
-
-    if not value:
-        raise RuntimeError(f"Missing required environment variable: {key}")
-
-    return value
+from utils import get_env
 
 # Optional: hardcode chatroom ID if you already know it (skips the lookup)
 # CHATROOM_ID = 123456
 CHATROOM_ID = None
 
-PUSHER_APP_KEY = get_env("PUSHER_APP_KEY")
 PUSHER_CLUSTER = "us2"
 PUSHER_URL = (
     f"wss://ws-{PUSHER_CLUSTER}.pusher.com/app/{PUSHER_APP_KEY}"
@@ -47,10 +35,6 @@ logging.basicConfig(
     datefmt="%H:%M:%S",
 )
 log = logging.getLogger("kick-monitor")
-
-DISCORD_WEBHOOK_URL_FLAGGED = get_env("DISCORD_WEBHOOK_URL_FLAGGED")
-DISCORD_WEBHOOK_URL_CHAT = get_env("DISCORD_WEBHOOK_URL_CHAT")
-DISCORD_WEBHOOK_URL_EVENTS = get_env("DISCORD_WEBHOOK_URL_EVENTS")
 
 RECENT_MESSAGES = deque(maxlen=8)
 

@@ -1,4 +1,14 @@
+from utils import get_env
+from dotenv import load_dotenv
+
+load_dotenv()
+
 CHANNEL_SLUG = "asmongold247"  # change to the channel you want
+PUSHER_APP_KEY = get_env("PUSHER_APP_KEY")
+
+DISCORD_WEBHOOK_URL_FLAGGED = get_env("DISCORD_WEBHOOK_URL_FLAGGED")
+DISCORD_WEBHOOK_URL_CHAT = get_env("DISCORD_WEBHOOK_URL_CHAT")
+DISCORD_WEBHOOK_URL_EVENTS = get_env("DISCORD_WEBHOOK_URL_EVENTS")
 
 SYSTEM_PROMPT = """
 You are a Kick chat moderation assistant for a very lax channel (Asmongold-style).
